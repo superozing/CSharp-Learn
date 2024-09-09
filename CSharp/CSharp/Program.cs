@@ -39,6 +39,22 @@
             // 더 큰 데이터에서 작은 데이터 타입으로 대입할 경우 형변환을 해주어야 함.
             short s = (short)i;
 
+
+            // string format
+            string strInput = Console.ReadLine();
+            Console.WriteLine(strInput);
+
+            // str to int
+            int iInput = int.Parse(strInput);
+
+            // int to string
+            int hp = 200;
+            int maxHp = 200;
+
+            // {} 가 C string의 %d 같은 느낌인가봐요.
+            string msg = string.Format("당신의 HP는 {0}/{1} 입니다.", hp, maxHp);
+            Console.WriteLine(msg);
+
         }
     }
 }
