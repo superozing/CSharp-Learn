@@ -59,6 +59,13 @@
             string interpolationMsg = $"당신의 HP는 {hp} {maxHp} 입니다."; // 아니 이런게 가능하다고????
             Console.WriteLine(msg);
 
+
+            // var (자동 추론 자료형), 하지만 자료형 명시하는게 더 가독성 좋아서 별로 안씀. 
+            var va = 10;
+            var vb = 1.234f;
+            var vc = "이런게 된다고?";
+            var vd = true;
+
         }
     }
 }
