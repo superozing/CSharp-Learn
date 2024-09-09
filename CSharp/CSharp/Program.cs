@@ -52,7 +52,11 @@
             int maxHp = 200;
 
             // {} 가 C string의 %d 같은 느낌인가봐요.
-            string msg = string.Format("당신의 HP는 {0}/{1} 입니다.", hp, maxHp);
+            string msg = string.Format("당신의 HP는 {0} {1} 입니다.", hp, maxHp);
+            Console.WriteLine(msg);
+
+            // 문자열 보간 (string interpolation)
+            string interpolationMsg = $"당신의 HP는 {hp} {maxHp} 입니다."; // 아니 이런게 가능하다고????
             Console.WriteLine(msg);
 
         }
