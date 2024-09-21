@@ -66,6 +66,11 @@
             var vc = "이런게 된다고?";
             var vd = true;
 
+            // 랜덤: 무작위 값을 뽑아올 수 있어요.
+            Random rand = new Random();
+            rand.Next(0, 3);
+
+
         }
     }
 }
