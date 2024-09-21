@@ -3,6 +3,19 @@
     class Program
     {
         // 주석.
+
+        static void AddRef(ref int a)
+        {
+            // a는 주소를 가져옴.
+            a++;
+        }
+
+        static void AddCopy(int a)
+        {
+            // a는 복사본을 가져옴.
+            a++;
+        }
+
         static void Main(string[] args)
         {
             // int - 정수형
@@ -60,7 +73,8 @@
             Console.WriteLine(msg);
 
 
-            // var (자동 추론 자료형), 하지만 자료형 명시하는게 더 가독성 좋아서 별로 안씀. 
+            // var (자동 추론 자료형), 하지만 자료형 명시하는게 더 가독성 좋아서 별로 안씀.
+            // C++의 auto와 비슷해보여요.
             var va = 10;
             var vb = 1.234f;
             var vc = "이런게 된다고?";
@@ -71,6 +85,15 @@
             rand.Next(0, 3);
 
 
+
+            /// 함수
+            int iRef = 0;
+
+            // 참조 값을 넘겨주려면 ref를 사용해야 한다.
+            AddRef(ref iRef);
+
+            // 참조 값을 넘겨주지 않는 함수의 경우 ref를 사용하지 않아도 된다(새로 생성된 복사된 매개변수)
+            AddCopy(iRef);
         }
     }
 }
