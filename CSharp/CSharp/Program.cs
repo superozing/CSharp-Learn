@@ -5,6 +5,24 @@
     // 기반 클래스
     class Player
     {
+        // 접근 지정자
+        public int iPublic;         // 외부에 공개
+        protected int iProtected;   // 외부에서 접근 불가, 파생 클래스에 공개
+        /*private*/int iPrivate;       // 외부와 파생 클래스에 모두 비공개 (이 클래스 내부에서만 사용하겠다)
+        // private 키워드는 붙이지 않아도 기본적으로 사용됨.
+
+        // Getter, Setter
+        // 멤버 수정이 의도한 동작인지 더 명확하게 알 수 있다.
+        // 디버깅이 편리하다.
+        public void SetPrivateMember(int iPrivate)
+        {
+            this.iPrivate = iPrivate;
+        }
+        public int GetPrivateMember()
+        {
+            return this.iPrivate;
+        }
+
         public static int counter; // static - 모든 객체가 공통으로 가짐.
         public int id;
         public int hp;
