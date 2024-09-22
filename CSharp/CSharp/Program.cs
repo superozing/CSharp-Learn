@@ -1,13 +1,38 @@
 ﻿namespace CSharp
 {
-
     // 클래스: 기본적으로 레퍼런스를 넘긴다.
-    class Knight
+
+    // 기반 클래스
+    class Player
     {
         public static int counter; // static - 모든 객체가 공통으로 가짐.
         public int id;
         public int hp;
         public int attack;
+
+        public Player()
+        {
+            Console.WriteLine("Player 생성자 호출");
+        }
+
+        public Player(int a)
+        {
+            Console.WriteLine("Player 생성자(a) 호출");
+        }
+    }
+
+    // 파생 클래스
+    // 파생 클래스는 기반 클래스의 멤버와 멤버함수를 모두 상속받는다.
+    class Archer : Player
+    { 
+        
+    }
+
+
+    // 파생 클래스
+    // 파생 클래스는 기반 클래스의 멤버와 멤버함수를 모두 상속받는다.
+    class Knight : Player
+    {
 
         // 스태틱 함수는 멤버에 접근할 수 없다.
         public static void StaticFuncCantControlMember()
@@ -36,9 +61,9 @@
         public void Move() { }
         public void Attack() { }
 
-        public Knight() 
+        public Knight() : base(10) // 기반 클래스 생성자 중 인자를 받는 생성자를 호출하고 싶을 경우, base 키워드를 사용해 호출 가능.
         {
-            id = counter++;
+            base.id = counter++; // 기반 클래스 멤버로 접근하기 위해서 base 키워드를 사용할 수 있다.
             hp = 100;
             attack = 100;
             Console.WriteLine("기본생성자 호출");
@@ -142,6 +167,9 @@
             //====================================
             // 생성자 사용한 객체 생성
 
+
+            // 생성자 호출 순서: 기반 -> 파생
+            // 소멸자 호출 순서: 파생 -> 기반
 
             Knight knight5 = new Knight(100, 101);
 
