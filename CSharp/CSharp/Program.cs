@@ -4,8 +4,23 @@
     // 클래스: 기본적으로 레퍼런스를 넘긴다.
     class Knight
     {
+        public static int counter; // static - 모든 객체가 공통으로 가짐.
+        public int id;
         public int hp;
         public int attack;
+
+        // 스태틱 함수는 멤버에 접근할 수 없다.
+        public static void StaticFuncCantControlMember()
+        {
+        }
+        
+        // 객체를 새로 만들어 멤버에 접근하는 것은 가능
+        public static Knight Instanciate()
+        {
+            var knight = new Knight();
+            knight.hp = 100;
+            return knight;
+        }
 
         public Knight Clone()
         {
@@ -23,6 +38,7 @@
 
         public Knight() 
         {
+            id = counter++;
             hp = 100;
             attack = 100;
             Console.WriteLine("기본생성자 호출");
@@ -125,9 +141,13 @@
 
             //====================================
             // 생성자 사용한 객체 생성
+
+
             Knight knight5 = new Knight(100, 101);
 
 
         }
+
+
     }
 }
