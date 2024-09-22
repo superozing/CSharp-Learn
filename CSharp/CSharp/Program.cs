@@ -21,6 +21,28 @@
         public void Move() { }
         public void Attack() { }
 
+        public Knight() 
+        {
+            hp = 100;
+            attack = 100;
+            Console.WriteLine("기본생성자 호출");
+        }
+
+        // this()는 자신의 생성자(지금은 기본 생성자를 뜻함)를 먼저 호출시키고, 그 다음 이 생성자를 호출시키라는 뜻.
+        public Knight(int hp) : this()
+        {
+            // this 키워드를 사용해서 멤버를 지칭할 수 있다.
+            this.hp = hp;
+            Console.WriteLine("hp생성자 호출");
+        }
+        
+        public Knight(int hp, int attack)
+        {
+            this.hp = hp;
+            this.attack = attack;
+            Console.WriteLine("hp, attack생성자 호출");
+        }
+
     }
 
     // 구조체: 기본적으로 복사를 넘긴다.
@@ -99,8 +121,13 @@
             // 구조체도 ref 키워드를 사용하면 매개 변수로 레퍼런스를 넘겨줄 수 있다.
             // (힙에 할당된 공간 뿐만 아니라 스택에 할당된 변수 역시 주소를 넘겨줄 수 있다.)
 
+
+
+            //====================================
+            // 생성자 사용한 객체 생성
+            Knight knight5 = new Knight(100, 101);
+
+
         }
-
-
     }
 }
