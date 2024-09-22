@@ -37,6 +37,13 @@
         {
             Console.WriteLine("Player 생성자(a) 호출");
         }
+        public void Move() { }
+
+        // virtual: 추상화.
+        // 파생 클래스에서 재정의된 함수가 있을 경우 그 함수를 사용하겠다.
+        // 가상함수 테이블을 사용해요.
+        public virtual void Attack() { }
+
     }
 
     // 파생 클래스
@@ -51,6 +58,20 @@
     // 파생 클래스는 기반 클래스의 멤버와 멤버함수를 모두 상속받는다.
     class Knight : Player
     {
+        // new 키워드: 기반 클래스의 Move함수를 숨기고, 대신 Knight Move 함수를 사용하겠다. "가상 함수가 아님. 가상 함수 테이블을 생성하지 않는다."
+        // new 키워드를 사용하지 않아도 오류를 발생시키지는 않지만, 컴파일러가 경고를 줌. 명시적으로 이 것이 내가 원하는 동작이다 라고 써붙이는 것.
+        // 기반 클래스 레퍼런스 변수를 사용해서 Move를 호출하면 기반 클래스의 Move가 호출되고, 파생 클래스의 레퍼런스 변수를 사용해서 Move를 호출하면 파생 클래스의 Move가 호출된다.
+        public new void Move() { }
+
+        // override 키워드: 기반 클래스에 동일한 이름의 함수가 있을 때, 부모 함수 대신 이 함수를 사용하겠다.
+        // override 하면, 기반 클래스 래퍼런스 변수를 사용해서 함수를 호출시킬 때, 기반 클래스의 함수 대신 가상 함수 테이블에 등록된 함수를 호출시킨다.
+        // sealed 키워드: 더 이상 이 클래스의 파생 클래스부터 override를 허용하지 않는다.
+        public sealed override void Attack()
+        {
+            // base 키워드를 사용해서 부모 쪽 함수를 호출할 수도 있다.
+            base.Attack();
+        }
+
 
         // 스태틱 함수는 멤버에 접근할 수 없다.
         public static void StaticFuncCantControlMember()
@@ -76,8 +97,6 @@
             // 이동 생성자가 호출되는 것 같은데... 그냥 넘겨준다 라고 이해해도 되겠죠?
             return clone;
         }
-        public void Move() { }
-        public void Attack() { }
 
         public Knight() : base(10) // 기반 클래스 생성자 중 인자를 받는 생성자를 호출하고 싶을 경우, base 키워드를 사용해 호출 가능.
         {
@@ -190,6 +209,35 @@
             // 소멸자 호출 순서: 파생 -> 기반
 
             Knight knight5 = new Knight(100, 101);
+
+
+            //===================================
+            // 클래스 형변환
+
+            Knight derived1 = new();
+            Mage derived2 = new();
+
+            // 기반 클래스 변수로 담을 수 있다.
+            // 파생 클래스 객체를 기반 클래스로 형변환 하는 것이 자유로움.
+            Player base1 = derived1;
+
+            // 기반 to 파생은 위험하기 때문에 동적 형변환이 필요하다.
+            // as 문법은 C++의 dynamic_cast와 비슷하지만, C#의 is 문법은 참 거짓을 반환한다.
+
+            // is 문법: base1에 담겨있는 클래스는 Knight 클래스인가?
+            if (base1 is Knight)
+            {
+                 derived1 = (Knight)base1;
+            }
+
+            // as 문법: base1에 담겨있는 클래스가 Knight 클래스라면 형변환 한 객체를 반환하고, 아니라면 null을 반환한다.
+            derived1 = (base1 as Knight);
+
+            // null - 참조 타입의 변수가 아무 자료형도 가리키고 있지 않음
+            if (derived1 != null)
+            {
+
+            }
 
 
         }
