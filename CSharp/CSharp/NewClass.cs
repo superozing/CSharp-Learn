@@ -80,6 +80,38 @@ namespace CSharp
             a[1] = new int[6];          
             a[0][0] = 10;               // 행과 열을 사용해서 접근할 수 있다.
 
+            // ========================
+            // List <- C#의 동적 배열? (C++ stl 벡터)
+
+            List<int> list = new List<int>();
+
+            // add를 통해서 push_back 할 수 있다.
+            for (int i = 0; i < 5; ++i)
+                list.Add(i);
+
+            // list.Count를 이용해서 list 요소 개수를 알 수 있다.
+            for (int i = 0; i < list.Count; ++i)
+            {
+            }
+
+            // foreach를 사용해서 순회 가능
+            foreach (int i in list)
+            {
+            }
+
+            // list.Insert를 사용해서 원하는 인덱스 자리에 삽입을 할 수 있다.
+            list.Insert(2, 10);
+
+            // Remove를 사용해서 원하는 값의 요소를 삭제할 수 있다.
+            list.Remove(2);
+
+            // RemoveAt을 사용해서 원하는 인덱스의 요소를 삭제할 수 있다.
+            list.RemoveAt(2);
+
+            // Clear()
+            list.Clear();
+
+
         }
 
 
