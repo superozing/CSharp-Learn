@@ -9,6 +9,28 @@ namespace CSharp
 {
     class NewClass
     {
+        static void Sort(int[] scores)
+        {
+            bool IsSorted = false;
+
+            while (!IsSorted)
+            {
+                IsSorted = true;
+                for (int i = 0; i < scores.Length - 1; ++i)
+                {
+                    if (scores[i] > scores[i + 1])
+                    {
+                        IsSorted = false;
+
+                        // swap
+                        int temp = scores[i];
+                        scores[i] = scores[i + 1]; 
+                        scores[i + 1] = temp; 
+                    }
+                }
+            }
+        }
+
         static void Main(string[] args)
         {
 
