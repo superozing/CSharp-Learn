@@ -15,7 +15,29 @@ namespace CSharp
             where T2 : class  // T2는 참조 형식이어야 한다. 
             where T3 : new()  // T3는 인자를 받지 않는 기본 생성자가 정의되어야 한다.
             where T4 : Monster// T4는 Monster 클래스 또는 상속받은 클래스여야 한다.
-        { 
+        {
+            private int hp;
+            private int hp2;
+
+            // 프로퍼티 - Get, Set 편하게
+            public int Hp 
+            { 
+                get 
+                {  
+                    return hp; 
+                }
+
+                // 접근 지정자 사용 가능.
+                protected set 
+                { 
+                    // value - 우항
+                    hp = value;
+                } 
+            }
+
+
+            // 자동 완성 프로퍼티
+            public int Hp2 { get; set; } // 
         }
 
         public static void Main(string[] args)
