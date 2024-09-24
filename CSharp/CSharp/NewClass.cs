@@ -7,6 +7,14 @@ using System.Threading.Tasks;
 
 namespace CSharp
 {
+    class Monster
+    {
+        uint m_id;
+
+        public Monster() { }
+        public Monster(uint _id) { m_id = _id; }
+    }
+
     class NewClass
     {
         static void Sort(int[] scores)
@@ -111,6 +119,37 @@ namespace CSharp
             // Clear()
             list.Clear();
 
+            // 선형적 구조이기 때문에 탐색에 O(N)의 시간복잡도가 걸린다.
+            // 예를 들어, 몬스터 객체 10000개가 리스트 안에 있을 때
+            // 원하는 ID 값을 찾기 위해 최악의 경우에는 10000번 검사를 해야 한다.
+            //
+
+
+            // ======================
+            // Dictionary - C++의 unordered_map과 비슷하다.
+            // 해시 맵. - 해시 테이블을 사용해서 빠른 탐색
+
+            // key, value.
+            Dictionary<int, Monster> dictionary = new Dictionary<int, Monster>();
+
+            // 요소 추가
+            dictionary.Add(1, new Monster(1)); // add 함수를 사용
+            dictionary[2] = new Monster(2);    // [] operator 사용
+
+            // 값 가져오기
+
+            // dictionary[찾으려는 키 값]; 으로 value 참조 가능.
+            // "위험한 접근". 키 값이 없을 경우 문제를 일으킴.
+            Monster mon1 = dictionary[1];
+
+            // TryGetValue()함수를 사용해서 out으로 값 가져올 수 있다.
+            // 반환으로 성공 여부 확인 가능.
+            // out - 함수 내부에서 반드시 값을 세팅함
+            bool suc = dictionary.TryGetValue(1, out mon1);
+
+            dictionary.Remove(1);
+
+            dictionary.Clear();
 
         }
 
