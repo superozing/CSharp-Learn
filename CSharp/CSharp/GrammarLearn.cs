@@ -88,6 +88,13 @@ namespace CSharp
             // ==================================
 
             // eventOnClicked();
+
+            // lambda - (인자)=>(구현부, 반환)
+            // reflection - gettype()로 type 가져와서 Type 사용해 필드 정보 가져오기. 클래스 내부 정보를 한 번에 볼 수 있다.
+            // attribute - 컴파일 타임 주석
+            // nullable - int? - int이지만, 예외 상황을 위해 null을 추가한 int? 자료형.
+            //  int? a; 가 있을 때, a ?? 0 -> a가 null이 아닐 경우 a를, 아니면 0을 반환.
+            //  a.HasValue를 사용해 값 있는지 확인 가능.
         }
     }
 }
