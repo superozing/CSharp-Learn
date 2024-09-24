@@ -9,6 +9,14 @@ namespace CSharp
     class GrammarLearn
     {
 
+        // delegate
+        // 마치 함수 포인터
+        delegate int OnClicked(int a, int b);
+
+
+
+
+
         // 템플릿과 같이 자료형 설정 가능.
         class LearnGeneric<T1, T2, T3, T4> // 반드시 어떤 자료형이 들어와야 하는지 명시 가능. (C++에 없는 문법)
             where T1 : struct // T1은 값 형식이어야 한다. 
@@ -40,6 +48,9 @@ namespace CSharp
             public int Hp2 { get; set; } // 
         }
 
+        public static int test1(int a, int b) { return 1; }
+        public static int test2(int a, int b) { return 2; }
+
         public static void Main(string[] args)
         {
             // =============================
@@ -58,7 +69,18 @@ namespace CSharp
             string s1 = (string)obj2;
 
 
-            // 템플릿
+            // ==================================
+            // delegate (대리자)
+            // ==================================
+
+            OnClicked onClicked = new OnClicked(test1);
+
+            // 마치 함수 포인터 같이 실행 가능.
+            onClicked(1, 2); // test1 실행
+
+            onClicked += test2;// 함수를 연이어 실행 가능(chaining)
+
+            onClicked(1, 2); // test1 실행 -> test2 실행
 
         }
     }
