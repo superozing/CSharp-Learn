@@ -11,8 +11,8 @@ namespace CSharp
 
         // delegate
         // 마치 함수 포인터
-        delegate int OnClicked(int a, int b);
-
+        public delegate int OnClicked(int a, int b);
+        public event OnClicked eventOnClicked;
 
 
 
@@ -82,6 +82,12 @@ namespace CSharp
 
             onClicked(1, 2); // test1 실행 -> test2 실행
 
+
+            // ==================================
+            // 이벤트
+            // ==================================
+
+            // eventOnClicked();
         }
     }
 }
